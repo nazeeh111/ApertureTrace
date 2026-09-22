@@ -1,0 +1,401 @@
+{
+  "project": {
+    "identical_numerical_and_data_files": 30,
+    "Sample_Lambertian": {
+      "shape": [
+        2,
+        128
+      ],
+      "exact_reference_parity": true,
+      "finite_gradient": true
+    },
+    "Sample_Retroreflective": {
+      "shape": [
+        2,
+        128
+      ],
+      "exact_reference_parity": true,
+      "finite_gradient": true
+    },
+    "captured_files_checked": 25,
+    "captured_data": [
+      {
+        "file": "captured_data/Mannequin/direct_before.mat",
+        "datasets": [
+          {
+            "key": "direct_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin/scan_10-30-19_12-55.mat",
+        "datasets": [
+          {
+            "key": "data",
+            "shape": [
+              99,
+              65536
+            ]
+          },
+          {
+            "key": "xpos",
+            "shape": [
+              99,
+              1
+            ]
+          },
+          {
+            "key": "zpos",
+            "shape": [
+              99,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin/LongExpNoObject_after.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin/LongExpNoObject_before.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin/direct_after.mat",
+        "datasets": [
+          {
+            "key": "direct_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin_Assymetric/direct_before.mat",
+        "datasets": [
+          {
+            "key": "direct_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin_Assymetric/LongExpNoObject_after.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin_Assymetric/LongExpNoObject_before.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin_Assymetric/scan_10-30-19_16-28.mat",
+        "datasets": [
+          {
+            "key": "data",
+            "shape": [
+              99,
+              65536
+            ]
+          },
+          {
+            "key": "xpos",
+            "shape": [
+              99,
+              1
+            ]
+          },
+          {
+            "key": "zpos",
+            "shape": [
+              99,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Mannequin_Assymetric/direct_after.mat",
+        "datasets": [
+          {
+            "key": "direct_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/E/direct_before.mat",
+        "datasets": [
+          {
+            "key": "direct_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/E/LongExpNoObject_after.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/E/LongExpNoObject_before.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/E/direct_after.mat",
+        "datasets": [
+          {
+            "key": "direct_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/E/scan_10-14-19_17-37.mat",
+        "datasets": [
+          {
+            "key": "data",
+            "shape": [
+              100,
+              65536
+            ]
+          },
+          {
+            "key": "xpos",
+            "shape": [
+              100,
+              1
+            ]
+          },
+          {
+            "key": "zpos",
+            "shape": [
+              100,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/K/scan_10-15-19_21-12.mat",
+        "datasets": [
+          {
+            "key": "data",
+            "shape": [
+              66,
+              65536
+            ]
+          },
+          {
+            "key": "xpos",
+            "shape": [
+              66,
+              1
+            ]
+          },
+          {
+            "key": "zpos",
+            "shape": [
+              66,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/K/direct_before.mat",
+        "datasets": [
+          {
+            "key": "direct_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/K/LongExpNoObject_after.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/K/LongExpNoObject_before.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/K/direct_after.mat",
+        "datasets": [
+          {
+            "key": "direct_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Y/direct_before.mat",
+        "datasets": [
+          {
+            "key": "direct_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Y/LongExpNoObject_after.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Y/scan_10-15-19_21-57.mat",
+        "datasets": [
+          {
+            "key": "data",
+            "shape": [
+              165,
+              65536
+            ]
+          },
+          {
+            "key": "xpos",
+            "shape": [
+              165,
+              1
+            ]
+          },
+          {
+            "key": "zpos",
+            "shape": [
+              165,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Y/LongExpNoObject_before.mat",
+        "datasets": [
+          {
+            "key": "LongExpNoObject_before",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "file": "captured_data/Y/direct_after.mat",
+        "datasets": [
+          {
+            "key": "direct_after",
+            "shape": [
+              65536,
+              1
+            ]
+          }
+        ]
+      }
+    ],
+    "byte_identical_files": 28,
+    "numerical_statements_unchanged": true
+  },
+  "environment": {
+    "numpy": "2.5.3",
+    "torch": "2.14.0",
+    "h5py": "3.16.0"
+  }
+}
