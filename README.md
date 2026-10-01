@@ -2,8 +2,6 @@
 
 CPU execution and verification of [KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe), by **Christopher A. Metzler, David B. Lindell and Gordon Wetzstein**. The original method reconstructs hidden object shape and motion from transient measurements along one optical path.
 
-![ApertureTrace](assets/identity.svg)
-
 ![Original captured-scene overview](teaser.jpg)
 
 ## Run on CPU
