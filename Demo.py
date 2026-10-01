@@ -1,5 +1,5 @@
-# ApertureTrace reconstruction demo
-# Maintained by nazeeh111
+#Demo associated with Keyhole Imaging
+#Chris Metzler 2020
 import argparse
 import os
 import numpy as np

@@ -1,0 +1,96 @@
+{
+  "observed_utc": "2026-10-01T06:28:37.631140+00:00",
+  "execution_success": true,
+  "predeclared_raw_motion_criterion_passed": false,
+  "full_run_source_commit": "8ca2fb70bbf744c3419d7146c3d6de292132553c",
+  "source_hashes": {
+    "Demo.py": "9c3102ad4b0d2a178223174a4a15b178052077977f52bd7cf2b61ca6851302e2",
+    "utils.py": "8e7002274257d9f82e615a9e455d06f66a93a9beff6d972184fe374d35b429dc"
+  },
+  "K_input_hashes": {
+    "scan_10-15-19_21-12.mat": "e74c677aabae3417dcb429ad5570557b2504141abdbdabfccd5cb3810b99f0cf",
+    "direct_after.mat": "7d19686a094e30d54558b0b670546bdb9799722b9c6d0908d13ebd37e326acd1",
+    "LongExpNoObject_after.mat": "df9b7bbd2180b4305dded86405db72015413b781716e4d122a98c49ec094ea41"
+  },
+  "source_input_unchanged": true,
+  "owned_group_gone": true,
+  "counts": {
+    "forwards": 555,
+    "backwards": 495,
+    "Adam_updates": 495
+  },
+  "finite_Q_returns_observed": 525,
+  "checks": {
+    "original_30_stages_495_updates_in_exact_order": true,
+    "555_forwards_495_backwards_495_updates": true,
+    "default_resolution_and_schedule_preserved": true,
+    "truth_initialization_disabled": true,
+    "CPU_only": true,
+    "525_finite_Q_returns_30_E_495_M": true,
+    "object_finite_nonnegative_positive_intensity_256": true,
+    "W_finite_nonnegative_normalized_66_1089": true,
+    "trajectory_shape_33": true,
+    "saved_arrays_equal_original_export_namespace": true,
+    "exact_five_NPZ_keys": true,
+    "object_png_shape_247": true,
+    "both_PNG_exports_decoded_finite_spatially_nonconstant": true,
+    "final_parameters_finite": true
+  },
+  "elapsed_seconds": 503.0364932080047,
+  "sampled_peak_RSS_bytes": 5529370624,
+  "worker_peak_RSS_bytes": 5556912128,
+  "wall_limit_seconds": 900.0,
+  "sampled_RSS_cutoff_bytes": 8589934592,
+  "seed_override": false,
+  "initial_parameter_tensor_sha256": "aef60d51012c35baa4c192b787935ec85a1bd4877231b510cc9f55e464c7eaaa",
+  "runtime": {
+    "python": "3.12.14",
+    "h5py": "3.16.0",
+    "numpy": "2.5.3",
+    "torch": "2.14.0",
+    "matplotlib": "3.11.2",
+    "torch_cpu_threads": 2,
+    "torch_interop_threads": 1
+  },
+  "motion": {
+    "argmax_trajectory_RMSE_m": 0.7676194694750389,
+    "best_constant_candidate_RMSE_m": 0.3304136454254473,
+    "beats_constant_baseline": false,
+    "scope": "One K capture, source-labeled reference; no image quality, convergence or calibrated physical accuracy claim."
+  },
+  "post_run_diagnostic": {
+    "raw_rmse_m": 0.7676194694750389,
+    "globally_reflected_x_rmse_m": 0.07837766906491442,
+    "original_raw_criterion_passed": false,
+    "orientation_selected_from_reference_for_diagnostic_only": true,
+    "saved_NPZ_changed": false
+  },
+  "source_export_semantics": {
+    "saved_object_equals_pre_final_update_parameter_square": true,
+    "saved_vs_final_parameter_square_max_abs_difference": 0.5442781448364258,
+    "W_computed_before_final_31_object_updates": true
+  },
+  "limits": [
+    "One unseeded K capture run, not repeatability or other-scene evidence.",
+    "Raw motion criterion failed and is retained as failure.",
+    "Post-run global reflection was selected against reference only for diagnostic analysis.",
+    "No image-quality threshold, calibrated accuracy, convergence, historical environment, CUDA or acquisition acceptance.",
+    "Existing CPU environment reused; fresh dependency installation not replicated.",
+    "RSS sampling is not a hard memory cap."
+  ],
+  "artifacts": {
+    "source-outputs.npz": {
+      "bytes": 560672,
+      "sha256": "df799feeb2d8373e37cc2da6c87e1b9ef39ac99959e6ad9ac9b6a4ef79541db7"
+    },
+    "object.png": {
+      "bytes": 66674,
+      "sha256": "7923e8ba6d9f0eb9bc9af559f9dc66901ba015e8006a21644ecd9200b3c88d6c"
+    },
+    "trajectory.png": {
+      "bytes": 64113,
+      "sha256": "406936dc97f07f9baabaf965966c3f89aa0c74bcba93266b44bc49a00aeb61fe"
+    }
+  },
+  "verification_attribution": "Supervised original-source execution; source comment and documentation restoration does not alter the numerical statements."
+}
