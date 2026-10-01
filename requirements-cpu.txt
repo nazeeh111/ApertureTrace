@@ -1,0 +1,6 @@
+# Direct runtime dependencies used by Demo.py and utils.py.
+# Tested on CPython 3.12.14, macOS arm64; historical environment is unchanged.
+numpy==2.5.3
+torch==2.14.0
+h5py==3.16.0
+matplotlib==3.11.2

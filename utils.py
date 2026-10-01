@@ -1,4 +1,4 @@
-# Maintained by nazeeh111
+#Chris Metzler 2020
 import torch
 import numpy as np
 import matplotlib.pyplot as plt

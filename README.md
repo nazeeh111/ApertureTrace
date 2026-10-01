@@ -1,33 +1,51 @@
 # ApertureTrace
 
-**Development history:** Developed locally using Git before publication. These projects were published to GitHub together, so similar upload dates do not indicate when development began.
+CPU execution and verification of [KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe), by **Christopher A. Metzler, David B. Lindell and Gordon Wetzstein**. The original method reconstructs hidden object shape and motion from transient measurements along one optical path.
 
 ![ApertureTrace](assets/identity.svg)
 
-Recover hidden object shape and trajectory from transient measurements along one optical path. Captured motion changes the viewpoints used by the expectation-maximization reconstruction.
+![Original captured-scene overview](teaser.jpg)
 
-![Captured-scene overview](teaser.jpg)
+## Run on CPU
 
-## Run
-
-The original dependency specification is preserved in `KeyholeEnvironment.yml`. It pins a historical Python/PyTorch/CUDA stack and is not a portable modern macOS environment.
+The modern CPU check uses Python 3.12 on macOS arm64. Create an isolated environment and install the tested direct dependencies:
 
 ```sh
-conda env create -f KeyholeEnvironment.yml
-conda activate Keyhole
-python Demo.py --reconstruction E
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements-cpu.txt
 ```
 
-Choose `E`, `K`, `Y`, `Mannequin`, or `Mannequin_Assymetric`. The default remains `Mannequin_Assymetric`. Output files are written to `reconstructions/`. Review `python Demo.py --help` for unchanged reconstruction arguments.
+Run from the repository root. `K` is the smallest included capture, with 66 measurement rows. This command uses the original 256 × 256 grid and all 30 optimization stages, limits PyTorch to two CPU threads and saves figures without opening windows:
+
+```sh
+MPLBACKEND=Agg .venv/bin/python - <<'PY'
+import runpy
+import sys
+import torch
+
+torch.set_num_threads(2)
+torch.set_num_interop_threads(1)
+sys.argv = ["Demo.py", "--reconstruction", "K"]
+runpy.run_path("Demo.py", run_name="__main__")
+PY
+```
+
+Choose `E`, `K`, `Y`, `Mannequin` or `Mannequin_Assymetric`. The source default remains `Mannequin_Assymetric`. Outputs are written to `reconstructions/`; use `.venv/bin/python Demo.py --help` for the original arguments. A run can consume several GiB of memory. Thread settings limit CPU concurrency, not memory use or elapsed time.
 
 ## Compute and data
 
-Captured `.mat` data for all five scenes is included. CPU execution is the default. The optional CUDA route is configured in the source and was designed for an NVIDIA GPU with about 10 GB memory. Full reconstruction can be compute-intensive; kernel checks do not establish end-to-end reconstruction performance.
+Captured `.mat` data for all five scenes is included. CPU execution is the default. The original `KeyholeEnvironment.yml` is preserved for the historical Conda stack; it pins old Python, PyTorch and CUDA versions and was not recreated by the modern CPU check. CUDA remains disabled in the source.
 
 The forward models, regularizers, learning rate, iteration schedule, coordinate conventions, file names, and scientific figure remain unchanged.
 
 ## Verification
 
-See [verification](VERIFICATION.md) for captured-file integrity and CPU numerical checks. Physical acquisition, GPU execution, and complete reconstruction optimization are separate acceptance steps.
+The complete default-resolution K run finished in 503 seconds with finite numerical values and valid array/image exports. Its raw trajectory error failed the declared constant-position baseline. [Verification](VERIFICATION.md) records that failure, the separate reflection diagnostic and the limits on image quality, convergence and physical accuracy. Initialization remains random; this single run is not a repeatability guarantee.
+
+## Source and license
+
+Original code and data: [KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe). Research: [Metzler, Lindell and Wetzstein, IEEE TCI 2021](https://www.computationalimaging.org/publications/keyhole-imaging/).
+
+[BSD-3-Clause license](LICENSE) · [Source and additions](NOTICE.md).
 
 Maintained by **nazeeh111**.
