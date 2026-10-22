@@ -4,6 +4,12 @@ CPU setup and checks for hidden-object shape and motion reconstruction from tran
 
 ![Original captured-scene overview](teaser.jpg)
 
+## Retained CPU result
+
+![Object image exported by the complete K-scene CPU run](verification/default-k/object.png)
+
+This is the saved object image from one complete 30-stage run on the included K capture, not the original overview above. The run completed and exported finite arrays, but its **raw trajectory failed** the declared constant-position comparison (0.768 m versus 0.330 m root mean square error). [See the uncorrected trajectory and full verification record](VERIFICATION.md#complete-k-reconstruction-2026-10-01). No image-quality or physical-accuracy claim follows from this output.
+
 ## Run on CPU
 
 The modern CPU check uses Python 3.12 on macOS arm64. Create an isolated environment and install the tested direct dependencies:
