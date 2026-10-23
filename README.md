@@ -1,14 +1,21 @@
 # ApertureTrace
 
-CPU setup and checks for hidden-object shape and motion reconstruction from transient measurements along one optical path.
+Hidden-object reconstruction from time-resolved light along one optical path. A CPU-ready continuation of the [Keyhole Imaging research implementation](#source-and-license), with analytical checks and retained run evidence.
 
-![Original captured-scene overview](teaser.jpg)
+## One capture, two estimates
 
-## Retained CPU result
+**The run completed; its raw motion criterion failed.** Unaltered exports from one full K-scene CPU run: object reconstruction, then raw trajectory.
 
-![Object image exported by the complete K-scene CPU run](verification/default-k/object.png)
+<p>
+  <img src="verification/default-k/object.png" width="247" alt="Saved K-scene object reconstruction, cropped and intensity-clipped by the original export code">
+  <img src="verification/default-k/trajectory.png" width="247" alt="Raw trajectory estimates in color diverge from the black reference positions">
+</p>
 
-This is the saved object image from one complete 30-stage run on the included K capture, not the original overview above. The run completed and exported finite arrays, but its **raw trajectory failed** the declared constant-position comparison (0.768 m versus 0.330 m root mean square error). [See the uncorrected trajectory and full verification record](VERIFICATION.md#complete-k-reconstruction-2026-10-01). No image-quality or physical-accuracy claim follows from this output.
+In the trajectory, black points show the source-labeled reference and colored points show estimates. Raw root mean square position error was **0.768 m**, versus **0.330 m** for a constant-position estimate. These images establish successful export, not image quality or physical accuracy. [Full run record and reflection diagnostic](VERIFICATION.md#complete-k-reconstruction-2026-10-01).
+
+## How it works
+
+The solver alternates between estimating where the object was and refining its shape. A Lambertian light-transport model predicts arrival-time measurements for candidate positions; those predictions are compared with the capture over 30 optimization stages. ApertureTrace preserves the research method and adds CPU guidance, kernel checks, and verification records.
 
 ## Run on CPU
 
@@ -45,6 +52,12 @@ The forward models, regularizers, learning rate, iteration schedule, coordinate 
 ## Verification
 
 The complete default-resolution K run finished in 503 seconds with finite numerical values and valid array/image exports. Its raw trajectory error failed the declared constant-position baseline. [Verification](VERIFICATION.md) records that failure, the separate reflection diagnostic and the limits on image quality, convergence and physical accuracy. Initialization remains random; this single run is not a repeatability guarantee.
+
+## Original research overview
+
+![Keyhole Imaging overview retained from the original research project](teaser.jpg)
+
+This overview belongs to the original research project. It is separate from the retained CPU run above.
 
 ## Source and license
 
