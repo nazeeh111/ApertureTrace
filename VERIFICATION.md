@@ -45,8 +45,12 @@ The run used CPython 3.12.14, NumPy 2.5.3, PyTorch 2.14.0, h5py 3.16.0 and Matpl
 
 ## Source preservation
 
-The numerical bodies of `Demo.py` and `utils.py`, all 25 captured files, `KeyholeEnvironment.yml` and `teaser.jpg` match [upstream KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe). The original source headers and BSD-3-Clause notice are restored. Documentation and verification additions are identified in [NOTICE.md](NOTICE.md).
+The numerical body of `Demo.py`, all 25 captured files, `KeyholeEnvironment.yml` and `teaser.jpg` match [upstream KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe). The original source headers and BSD-3-Clause notice are restored. Documentation and verification additions are identified in [NOTICE.md](NOTICE.md).
 
 ## Continuous checks
 
 The CPU workflow runs `python -m unittest discover -s tests -v` on Python 3.12 and the documented CPU dependencies. Small analytical fixtures check arrival bins, amplitudes and intensity gradients for both forward models, colliding returns, time-window clipping, and constant/affine regularizers. It also opens all 25 included captures and checks their recorded dataset shapes and finite values. These checks do not rerun the full optimizer, measure image quality or supersede the failed raw-motion criterion above.
+
+## Sampler reliability repairs, 26 October 2026
+
+`utils.py` intentionally differs from the retained upstream snapshot: implicit grids are rebuilt per call rather than stored in mutable defaults; NumPy voxel defaults are converted to the existing float32 tensor representation; and the optional three-bin filter uses valid dilation and preserves a single sampling row. Analytical arrival/amplitude/gradient checks, all25 capture shape/finite checks, repeated different-size grids and explicit three-bin averages verify the repaired paths. This does not rerun the full optimizer or change its retained scientific results.

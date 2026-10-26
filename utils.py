@@ -26,11 +26,13 @@ def Laplacian_and_Hessian(img):
     H = torch.conv2d(L,laplacian_filter.reshape(1,1,laplacian_filter.shape[0],laplacian_filter.shape[1]))
     return L,H
 
-def Sample_Lambertian(voxel_values=np.ones((32**2,1)),sampling_coordinates=[[0,0,-2],[1,0,-2],[0,2,0]],voxel_coordinates=[],n_t=512,bin_resolution_t=bin_resolution_t,cuda=cuda,jitter=False,filter=False):
+def Sample_Lambertian(voxel_values=np.ones((32**2,1)),sampling_coordinates=[[0,0,-2],[1,0,-2],[0,2,0]],voxel_coordinates=None,n_t=512,bin_resolution_t=bin_resolution_t,cuda=cuda,jitter=False,filter=False):
     Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
     bin_resolution_d = bin_resolution_t*c
+    voxel_values = torch.as_tensor(voxel_values, dtype=torch.float32)
 
     if not voxel_coordinates:
+        voxel_coordinates = []
         #Use default grid
         for j in range(voxel_values.shape[0]):
             for i in range(voxel_values.shape[1]):
@@ -84,7 +86,7 @@ def Sample_Lambertian(voxel_values=np.ones((32**2,1)),sampling_coordinates=[[0,0
 
     if filter:
         kernel_size=3
-        myfilter = torch.nn.Conv1d(in_channels=n_s, out_channels=n_s, kernel_size=3, stride=1, padding=0, dilation=0, groups=n_s, bias=False, padding_mode='zeros')
+        myfilter = torch.nn.Conv1d(in_channels=n_s, out_channels=n_s, kernel_size=3, stride=1, padding=0, dilation=1, groups=n_s, bias=False, padding_mode='zeros')
         if cuda:
             myfilter.weight.data = torch.zeros(size=(n_s,1,kernel_size)).cuda()#Should be out_channel x in_channels/groups x kernel_size
         else:
@@ -93,16 +95,18 @@ def Sample_Lambertian(voxel_values=np.ones((32**2,1)),sampling_coordinates=[[0,0
         myfilter.weight.data[:, 0, 1] = 1 / 3
         myfilter.weight.data[:, 0, 2] = 1 / 3
         myfilter.weight.requires_grad = False
-        measurement=myfilter(measurement.unsqueeze(0)).squeeze()
+        measurement=myfilter(measurement.unsqueeze(0)).squeeze(0)
 
     measurement[:,0]=0
     return measurement
 
-def Sample_Retroreflective(voxel_values=np.ones((32**2,1)),sampling_coordinates=[[0,0,-2],[1,0,-2],[0,2,0]],voxel_coordinates=[],n_t=512,bin_resolution_t=bin_resolution_t,cuda=cuda,jitter=False,filter=False):
+def Sample_Retroreflective(voxel_values=np.ones((32**2,1)),sampling_coordinates=[[0,0,-2],[1,0,-2],[0,2,0]],voxel_coordinates=None,n_t=512,bin_resolution_t=bin_resolution_t,cuda=cuda,jitter=False,filter=False):
     Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
     bin_resolution_d = bin_resolution_t*c
+    voxel_values = torch.as_tensor(voxel_values, dtype=torch.float32)
 
     if not voxel_coordinates:
+        voxel_coordinates = []
         #Use default grid
         for j in range(voxel_values.shape[0]):
             for i in range(voxel_values.shape[1]):
@@ -155,7 +159,7 @@ def Sample_Retroreflective(voxel_values=np.ones((32**2,1)),sampling_coordinates=
 
     if filter:
         kernel_size=3
-        myfilter = torch.nn.Conv1d(in_channels=n_s, out_channels=n_s, kernel_size=3, stride=1, padding=0, dilation=0, groups=n_s, bias=False, padding_mode='zeros')
+        myfilter = torch.nn.Conv1d(in_channels=n_s, out_channels=n_s, kernel_size=3, stride=1, padding=0, dilation=1, groups=n_s, bias=False, padding_mode='zeros')
         if cuda:
             myfilter.weight.data = torch.zeros(size=(n_s,1,kernel_size)).cuda()#Should be out_channel x in_channels/groups x kernel_size
         else:
@@ -164,7 +168,7 @@ def Sample_Retroreflective(voxel_values=np.ones((32**2,1)),sampling_coordinates=
         myfilter.weight.data[:, 0, 1] = 1 / 3
         myfilter.weight.data[:, 0, 2] = 1 / 3
         myfilter.weight.requires_grad = False
-        measurement=myfilter(measurement.unsqueeze(0)).squeeze()
+        measurement=myfilter(measurement.unsqueeze(0)).squeeze(0)
 
 
     measurement[:,0]=0#Discard the first index

@@ -47,7 +47,7 @@ Choose `E`, `K`, `Y`, `Mannequin` or `Mannequin_Assymetric`. The source default 
 
 Captured `.mat` data for all five scenes is included. CPU execution is the default. The original `KeyholeEnvironment.yml` is preserved for the historical Conda stack; it pins old Python, PyTorch and CUDA versions and was not recreated by the modern CPU check. CUDA remains disabled in the source.
 
-The forward models, regularizers, learning rate, iteration schedule, coordinate conventions, file names, and scientific figure remain unchanged.
+Radiometric formulas, regularizers, learning rate, iteration schedule, coordinate conventions, file names, and the scientific figure remain unchanged. The sampler utilities rebuild implicit grids for each call, accept their NumPy defaults, and support the optional three-bin filter.
 
 ## Verification
 
