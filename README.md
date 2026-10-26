@@ -61,8 +61,4 @@ This overview belongs to the original research project. It is separate from the 
 
 ## Source and license
 
-Based on [KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe) by **Christopher A. Metzler, David B. Lindell and Gordon Wetzstein**. [Research publication, IEEE TCI 2021](https://www.computationalimaging.org/publications/keyhole-imaging/).
-
-[BSD-3-Clause license](LICENSE) · [Source and additions](NOTICE.md).
-
-Maintained by **nazeeh111**.
+Derived from [KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe) under [BSD-3-Clause](LICENSE). [NOTICE.md](NOTICE.md) records the research source and ApertureTrace additions.
