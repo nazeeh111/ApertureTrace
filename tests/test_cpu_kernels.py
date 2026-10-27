@@ -92,3 +92,35 @@ class CapturedData(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RepeatedCalls(unittest.TestCase):
+    def test_default_grid_is_rebuilt_for_each_shape(self):
+        for model in (Sample_Lambertian, Sample_Retroreflective):
+            with self.subTest(model=model.__name__):
+                model(torch.ones((2, 2)), n_t=16, bin_resolution_t=1e-8)
+                actual = model(torch.ones((3, 3)), n_t=16, bin_resolution_t=1e-8)
+                expected = model(torch.ones((3, 3)), voxel_coordinates=[], n_t=16,
+                                 bin_resolution_t=1e-8)
+                torch.testing.assert_close(actual, expected)
+
+    def test_filter_matches_three_bin_average(self):
+        for model in (Sample_Lambertian, Sample_Retroreflective):
+            with self.subTest(model=model.__name__):
+                arguments = dict(sampling_coordinates=[[0, 0, -2]],
+                                 voxel_coordinates=[[0, 0, 0]], n_t=16,
+                                 bin_resolution_t=.9 / 3e8, cuda=False)
+                raw = model(torch.tensor([2.0]), **arguments)
+                expected = raw.unfold(1, 3, 1).mean(-1)
+                expected[:, 0] = 0
+                actual = model(torch.tensor([2.0]), filter=True, **arguments)
+                torch.testing.assert_close(actual, expected)
+
+    def test_numpy_default_values_are_supported(self):
+        for model in (Sample_Lambertian, Sample_Retroreflective):
+            with self.subTest(model=model.__name__):
+                actual = model()
+                expected = model(torch.ones((32**2, 1)), voxel_coordinates=[])
+                torch.testing.assert_close(actual, expected)
+                self.assertEqual(tuple(actual.shape), (3, 512))
+                self.assertTrue(torch.isfinite(actual).all())
