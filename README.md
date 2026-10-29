@@ -61,4 +61,4 @@ This overview belongs to the original research project. It is separate from the 
 
 ## Source and license
 
-Derived from [KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe) under [BSD-3-Clause](LICENSE). [NOTICE.md](NOTICE.md) records the research source and ApertureTrace additions.
+Derived from [KeyholeImaging](https://github.com/computational-imaging/KeyholeImaging/tree/10d9f12f362d912793159c9dfc3d021d7137d5fe) under [BSD-3-Clause](LICENSE). [LICENSE](LICENSE) records the research source and ApertureTrace additions.
